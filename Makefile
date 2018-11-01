@@ -3,7 +3,7 @@ CC=cl65
 LD=ld65
 CFLAGS=-ttelestrat
 LDFILES=
-CA65_ROM=ca65
+CC65_ROM=cc65
 
 all : build
 .PHONY : all
@@ -18,8 +18,8 @@ TELESTRAT_TARGET_RELEASE=release/telestrat
 MYDATE = $(shell date +"%Y-%m-%d %H:%m")
  
 build: $(SOURCE_BANK5)
-	$(AS) $(CFLAGS) $(SOURCE) -o ca65.ld65
-	$(LD) -tnone ca65.ld65 -o ca65.rom
+	$(AS) $(CFLAGS) $(SOURCE) -o cc65.ld65 -D__DATEBUILD__="$(MYDATE)"
+	$(LD) -tnone ca65.ld65 -o cc65.rom
 
 test:
 	echo hello
